@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Shamba Manager</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,600;0,700;1,400&family=DM+Mono:wght@400;500&family=Nunito:wght@300;400;600;700;800&display=swap');
+/* System fonts — no internet needed, look great on iPhone */
 
 :root {
 –earth: #2c1a0e;
@@ -33,16 +33,16 @@
 –sh: 0 2px 16px rgba(44,26,14,0.10);
 }
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:‘Nunito’,sans-serif;background:var(–bg);color:var(–text);min-height:100vh;font-size:15px;}
+body{font-family:-apple-system,‘Helvetica Neue’,Arial,sans-serif;background:var(–bg);color:var(–text);min-height:100vh;font-size:15px;}
 
 .topbar{background:var(–earth);color:#fff;padding:0 16px;display:flex;align-items:center;justify-content:space-between;height:54px;position:sticky;top:0;z-index:200;box-shadow:0 2px 10px rgba(0,0,0,0.3);}
-.brand{font-family:‘Bitter’,serif;font-size:1.25rem;font-weight:700;color:var(–sun);letter-spacing:.02em;}
-.brand span{color:#c8a878;font-size:.7rem;font-weight:400;display:block;line-height:1;font-family:‘DM Mono’,monospace;}
-.topbar-date{font-family:‘DM Mono’,monospace;font-size:.7rem;color:#c8a878;}
+.brand{font-family:Georgia,‘Times New Roman’,serif;font-size:1.25rem;font-weight:700;color:var(–sun);letter-spacing:.02em;}
+.brand span{color:#c8a878;font-size:.7rem;font-weight:400;display:block;line-height:1;font-family:-apple-system,monospace;}
+.topbar-date{font-family:Menlo,monospace;font-size:.7rem;color:#c8a878;}
 
 .tabnav{background:var(–soil);display:flex;overflow-x:auto;scrollbar-width:none;position:sticky;top:54px;z-index:199;}
 .tabnav::-webkit-scrollbar{display:none;}
-.tab-btn{flex-shrink:0;padding:11px 16px;color:#c8a878;background:none;border:none;font-family:‘Nunito’,sans-serif;font-size:.78rem;font-weight:800;cursor:pointer;border-bottom:3px solid transparent;transition:all .18s;white-space:nowrap;text-transform:uppercase;letter-spacing:.07em;}
+.tab-btn{flex-shrink:0;padding:11px 16px;color:#c8a878;background:none;border:none;font-family:-apple-system,‘Helvetica Neue’,sans-serif;font-size:.78rem;font-weight:800;cursor:pointer;border-bottom:3px solid transparent;transition:all .18s;white-space:nowrap;text-transform:uppercase;letter-spacing:.07em;}
 .tab-btn.active{color:var(–sun);border-bottom-color:var(–sun);background:rgba(240,165,0,.1);}
 .tab-btn:hover{color:#fff;}
 
@@ -50,27 +50,27 @@ body{font-family:‘Nunito’,sans-serif;background:var(–bg);color:var(–text
 .section{display:none;}.section.active{display:block;}
 
 .card{background:var(–card);border-radius:var(–r);border:1px solid var(–border);box-shadow:var(–sh);padding:18px;margin-bottom:16px;}
-.card-title{font-family:‘Bitter’,serif;font-size:1rem;font-weight:700;color:var(–earth);margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid var(–border);display:flex;align-items:center;gap:8px;}
+.card-title{font-family:Georgia,serif;font-size:1rem;font-weight:700;color:var(–earth);margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid var(–border);display:flex;align-items:center;gap:8px;}
 
 .sec-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;flex-wrap:wrap;gap:10px;}
-.sec-title{font-family:‘Bitter’,serif;font-size:1.35rem;font-weight:700;color:var(–earth);}
+.sec-title{font-family:Georgia,‘Times New Roman’,serif;font-size:1.35rem;font-weight:700;color:var(–earth);}
 .sec-sub{font-size:.78rem;color:var(–muted);margin-top:2px;}
 
 .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin-bottom:18px;}
 .stat{background:var(–card);border-radius:var(–r);border:1px solid var(–border);padding:14px 12px;text-align:center;box-shadow:var(–sh);}
 .stat .si{font-size:1.6rem;margin-bottom:4px;}
-.stat .sv{font-family:‘Bitter’,serif;font-size:1.25rem;font-weight:700;color:var(–earth);}
+.stat .sv{font-family:Georgia,‘Times New Roman’,serif;font-size:1.25rem;font-weight:700;color:var(–earth);}
 .stat .sl{font-size:.68rem;color:var(–muted);text-transform:uppercase;letter-spacing:.07em;font-weight:700;margin-top:2px;}
 .stat.g .sv{color:var(–success);}.stat.r .sv{color:var(–danger);}.stat.o .sv{color:var(–warn);}
 
 .fg{display:flex;flex-direction:column;gap:4px;margin-bottom:2px;}
 .fg label{font-size:.7rem;font-weight:800;color:var(–muted);text-transform:uppercase;letter-spacing:.07em;}
-.fg input,.fg select,.fg textarea{padding:9px 11px;border:1.5px solid var(–border);border-radius:8px;font-family:‘Nunito’,sans-serif;font-size:.88rem;color:var(–text);background:#fdfaf6;outline:none;transition:border-color .18s;}
+.fg input,.fg select,.fg textarea{padding:9px 11px;border:1.5px solid var(–border);border-radius:8px;font-family:-apple-system,‘Helvetica Neue’,Arial,sans-serif;font-size:.88rem;color:var(–text);background:#fdfaf6;outline:none;transition:border-color .18s;}
 .fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(–clay);background:#fff;}
 .fg textarea{resize:vertical;min-height:64px;}
 .form-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:12px;}
 
-.btn{padding:9px 20px;border-radius:8px;border:none;font-family:‘Nunito’,sans-serif;font-size:.88rem;font-weight:700;cursor:pointer;transition:all .16s;display:inline-flex;align-items:center;gap:6px;}
+.btn{padding:9px 20px;border-radius:8px;border:none;font-family:-apple-system,‘Helvetica Neue’,Arial,sans-serif;font-size:.88rem;font-weight:700;cursor:pointer;transition:all .16s;display:inline-flex;align-items:center;gap:6px;}
 .btn-primary{background:var(–leaf);color:#fff;}.btn-primary:hover{background:#1e4d1e;transform:translateY(-1px);}
 .btn-warn{background:var(–warn);color:#fff;}.btn-warn:hover{background:#a05508;}
 .btn-danger{background:var(–danger);color:#fff;padding:5px 10px;font-size:.76rem;}.btn-danger:hover{background:#8a2218;}
@@ -82,19 +82,19 @@ body{font-family:‘Nunito’,sans-serif;background:var(–bg);color:var(–text
 .tbl-wrap{overflow-x:auto;}
 table{width:100%;border-collapse:collapse;font-size:.83rem;}
 thead tr{background:var(–earth);color:#f0e0c8;}
-thead th{padding:9px 11px;text-align:left;font-family:‘DM Mono’,monospace;font-size:.68rem;letter-spacing:.07em;text-transform:uppercase;white-space:nowrap;}
+thead th{padding:9px 11px;text-align:left;font-family:Menlo,‘Courier New’,monospace;font-size:.68rem;letter-spacing:.07em;text-transform:uppercase;white-space:nowrap;}
 tbody tr{border-bottom:1px solid var(–border);transition:background .13s;}
 tbody tr:hover{background:#fdf5ea;}
 tbody td{padding:9px 11px;vertical-align:middle;}
 
-.badge{display:inline-block;padding:2px 8px;border-radius:20px;font-size:.68rem;font-weight:800;font-family:‘DM Mono’,monospace;white-space:nowrap;}
+.badge{display:inline-block;padding:2px 8px;border-radius:20px;font-size:.68rem;font-weight:800;font-family:Menlo,‘Courier New’,monospace;white-space:nowrap;}
 .bg-green{background:#e8f5e9;color:#1b5e20;}.bg-orange{background:#fff3e0;color:#e65100;}
 .bg-blue{background:#e3f2fd;color:#0d47a1;}.bg-red{background:#fce4ec;color:#880e4f;}
 .bg-purple{background:#f3e5f5;color:#4a148c;}.bg-brown{background:#efebe9;color:#3e2723;}
 .bg-teal{background:#e0f2f1;color:#004d40;}.bg-gold{background:#fff8e1;color:#ff6f00;}
 
 .fbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;align-items:center;}
-.fbar select,.fbar input{padding:7px 10px;border:1.5px solid var(–border);border-radius:7px;font-family:‘Nunito’,sans-serif;font-size:.83rem;background:#fff;color:var(–text);outline:none;}
+.fbar select,.fbar input{padding:7px 10px;border:1.5px solid var(–border);border-radius:7px;font-family:-apple-system,‘Helvetica Neue’,Arial,sans-serif;font-size:.83rem;background:#fff;color:var(–text);outline:none;}
 .fbar select:focus,.fbar input:focus{border-color:var(–clay);}
 
 .empty{text-align:center;padding:36px 18px;color:var(–muted);}
@@ -109,11 +109,11 @@ tbody td{padding:9px 11px;vertical-align:middle;}
 .tl-item::before{content:’’;position:absolute;left:-19px;top:10px;width:10px;height:10px;border-radius:50%;background:var(–leaf);border:2px solid #fff;box-shadow:0 0 0 2px var(–leaf);}
 .tl-card{background:var(–card);border:1px solid var(–border);border-radius:10px;padding:12px 14px;box-shadow:0 1px 6px rgba(44,26,14,.07);}
 .tl-header{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:6px;margin-bottom:6px;}
-.tl-date{font-family:‘DM Mono’,monospace;font-size:.72rem;color:var(–muted);}
+.tl-date{font-family:Menlo,‘Courier New’,monospace;font-size:.72rem;color:var(–muted);}
 .tl-actions{display:flex;gap:6px;}
 .tl-meta{display:flex;flex-wrap:wrap;gap:6px;align-items:center;}
 .tl-notes{font-size:.82rem;color:var(–muted);margin-top:6px;font-style:italic;}
-.tl-cost{font-family:‘DM Mono’,monospace;font-size:.82rem;font-weight:700;}
+.tl-cost{font-family:Menlo,‘Courier New’,monospace;font-size:.82rem;font-weight:700;}
 .tl-cost.expense{color:var(–danger);}.tl-cost.income{color:var(–success);}
 
 .pnl-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:16px;}
@@ -121,7 +121,7 @@ tbody td{padding:9px 11px;vertical-align:middle;}
 .pnl-box.inc{background:#e8f5e9;border:2px solid #66bb6a;}
 .pnl-box.exp{background:#fce4ec;border:2px solid #ef9a9a;}
 .pnl-box.net{background:#fff8e1;border:2px solid #ffd54f;}
-.pnl-val{font-family:‘Bitter’,serif;font-size:1.25rem;font-weight:700;margin-bottom:3px;}
+.pnl-val{font-family:Georgia,‘Times New Roman’,serif;font-size:1.25rem;font-weight:700;margin-bottom:3px;}
 .pnl-box.inc .pnl-val{color:var(–success);}
 .pnl-box.exp .pnl-val{color:var(–danger);}
 .pnl-box.net .pnl-val{color:var(–warn);}
@@ -130,7 +130,7 @@ tbody td{padding:9px 11px;vertical-align:middle;}
 /* CHARTS */
 .charts-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
 .chart-box{background:var(–card);border-radius:var(–r);border:1px solid var(–border);box-shadow:var(–sh);padding:16px;}
-.chart-title{font-family:‘Bitter’,serif;font-size:.9rem;font-weight:700;color:var(–earth);margin-bottom:12px;text-align:center;}
+.chart-title{font-family:Georgia,‘Times New Roman’,serif;font-size:.9rem;font-weight:700;color:var(–earth);margin-bottom:12px;text-align:center;}
 .chart-wrap{position:relative;display:flex;justify-content:center;align-items:center;}
 canvas{max-width:100%;height:auto;}
 .chart-legend{margin-top:12px;}
@@ -138,20 +138,20 @@ canvas{max-width:100%;height:auto;}
 .legend-dot{width:11px;height:11px;border-radius:50%;flex-shrink:0;}
 
 /* SEASON COMPARE */
-.season-compare-table tbody td{font-family:‘DM Mono’,monospace;font-size:.8rem;}
+.season-compare-table tbody td{font-family:Menlo,‘Courier New’,monospace;font-size:.8rem;}
 
 /* REPORTS */
 .insight-card{background:var(–card);border-radius:var(–r);border:1px solid var(–border);box-shadow:var(–sh);padding:16px;margin-bottom:12px;display:flex;gap:14px;align-items:flex-start;}
 .insight-icon{font-size:1.8rem;flex-shrink:0;}
-.insight-title{font-family:‘Bitter’,serif;font-size:.95rem;font-weight:700;color:var(–earth);margin-bottom:4px;}
+.insight-title{font-family:Georgia,‘Times New Roman’,serif;font-size:.95rem;font-weight:700;color:var(–earth);margin-bottom:4px;}
 .insight-body{font-size:.82rem;color:var(–muted);line-height:1.6;}
-.insight-val{font-family:‘DM Mono’,monospace;font-weight:700;color:var(–earth);}
+.insight-val{font-family:Menlo,‘Courier New’,monospace;font-weight:700;color:var(–earth);}
 
 /* MODAL */
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:500;align-items:center;justify-content:center;padding:16px;}
 .modal-overlay.open{display:flex;}
 .modal{background:#fff;border-radius:14px;padding:22px;width:100%;max-width:560px;max-height:90vh;overflow-y:auto;box-shadow:0 8px 40px rgba(0,0,0,.25);}
-.modal-title{font-family:‘Bitter’,serif;font-size:1.1rem;font-weight:700;color:var(–earth);margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid var(–border);}
+.modal-title{font-family:Georgia,‘Times New Roman’,serif;font-size:1.1rem;font-weight:700;color:var(–earth);margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid var(–border);}
 .modal-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:16px;padding-top:12px;border-top:1px solid var(–border);}
 
 @media(max-width:600px){
@@ -577,7 +577,7 @@ canvas{max-width:100%;height:auto;}
     <div class="fg"><label>Notes</label><input type="text" id="wk-notes" placeholder="e.g. Cleared eastern rows"></div>
   </div>
   <div id="wk-cost-preview" style="background:var(--leaf-light);border-radius:8px;padding:10px 14px;margin-bottom:12px;font-size:.85rem;display:none;">
-    <strong>Cost preview:</strong> <span id="wk-cost-val" style="font-family:'DM Mono',monospace;font-weight:700;color:var(--leaf);"></span>
+    <strong>Cost preview:</strong> <span id="wk-cost-val" style="font-family:Menlo,'Courier New',monospace;font-weight:700;color:var(--leaf);"></span>
   </div>
   <button class="btn btn-primary" onclick="saveWorkLog()">✅ Save Work Log</button>
 </div>
@@ -657,7 +657,7 @@ canvas{max-width:100%;height:auto;}
       </div>
       <div class="fg" style="margin-bottom:4px;"><label>Notes</label><textarea id="st-notes" placeholder="e.g. Specialist in irrigation, replaced John Kamau"></textarea></div>
       <div id="st-daily-rate" style="background:var(--leaf-light);border-radius:8px;padding:10px;margin-bottom:12px;font-size:.85rem;display:none;">
-        Daily rate: <strong id="st-rate-val" style="font-family:'DM Mono',monospace;"></strong>
+        Daily rate: <strong id="st-rate-val" style="font-family:Menlo,'Courier New',monospace;"></strong>
       </div>
       <div class="modal-actions">
         <button class="btn btn-ghost" onclick="closeStaffModal()">Cancel</button>
@@ -715,7 +715,7 @@ canvas{max-width:100%;height:auto;}
       📂 Choose Backup File
       <input type="file" id="restore-file" accept=".json" style="display:none;" onchange="restoreBackup(this)">
     </label>
-    <span id="restore-filename" style="font-size:.82rem;color:var(--muted);font-family:'DM Mono',monospace;"></span>
+    <span id="restore-filename" style="font-size:.82rem;color:var(--muted);font-family:Menlo,'Courier New',monospace;"></span>
   </div>
 </div>
 
@@ -891,7 +891,7 @@ function barChart(canvasId, labels, datasets, opts={}) {
 function legendHTML(labels, values, colors, total) {
   return labels.map((l,i)=>{
     const pct = total>0?((values[i]/total)*100).toFixed(1):0;
-    return `<div class="legend-item"><div class="legend-dot" style="background:${colors[i%colors.length]}"></div><span style="flex:1;">${l}</span><span style="font-family:'DM Mono',monospace;font-size:.72rem;">${pct}%</span></div>`;
+    return `<div class="legend-item"><div class="legend-dot" style="background:${colors[i%colors.length]}"></div><span style="flex:1;">${l}</span><span style="font-family:Menlo,'Courier New',monospace;font-size:.72rem;">${pct}%</span></div>`;
   }).join('');
 }
 
@@ -1065,12 +1065,12 @@ function renderSeasons(){
       const net=inc-exp;
       return `<tr>
         <td><strong>${s.name}</strong></td>
-        <td style="font-family:'DM Mono',monospace;font-size:.8rem;">${s.start||'—'}</td>
-        <td style="font-family:'DM Mono',monospace;font-size:.8rem;">${s.end||'—'}</td>
+        <td style="font-family:Menlo,'Courier New',monospace;font-size:.8rem;">${s.start||'—'}</td>
+        <td style="font-family:Menlo,'Courier New',monospace;font-size:.8rem;">${s.end||'—'}</td>
         <td style="text-align:center;">${sa.length}</td>
-        <td style="text-align:right;color:var(--success);font-family:'DM Mono',monospace;">${fmt(inc)}</td>
-        <td style="text-align:right;color:var(--danger);font-family:'DM Mono',monospace;">${fmt(exp)}</td>
-        <td style="text-align:right;font-weight:700;font-family:'DM Mono',monospace;color:${net>=0?'var(--success)':'var(--danger)'};">${net>=0?'+':''}${fmt(net)}</td>
+        <td style="text-align:right;color:var(--success);font-family:Menlo,'Courier New',monospace;">${fmt(inc)}</td>
+        <td style="text-align:right;color:var(--danger);font-family:Menlo,'Courier New',monospace;">${fmt(exp)}</td>
+        <td style="text-align:right;font-weight:700;font-family:Menlo,'Courier New',monospace;color:${net>=0?'var(--success)':'var(--danger)'};">${net>=0?'+':''}${fmt(net)}</td>
         <td style="font-size:.8rem;">${s.notes||'—'}</td>
         <td><button class="btn btn-danger" onclick="deleteSeason('${s.id}')">✕</button></td>
       </tr>`;
@@ -1226,7 +1226,7 @@ function renderCropView(){
   // Breakdown table
   document.getElementById('cv-breakdown').innerHTML=Object.entries(bmap).sort((a,b)=>b[1]-a[1]).map(([t,v])=>`<tr>
     <td>${badge(t)}</td><td style="text-align:center;">${acts.filter(a=>a.type===t).length}</td>
-    <td style="text-align:right;font-family:'DM Mono',monospace;font-weight:700;">${fmt(v)}</td>
+    <td style="text-align:right;font-family:Menlo,'Courier New',monospace;font-weight:700;">${fmt(v)}</td>
   </tr>`).join('');
 }
 
@@ -1278,9 +1278,9 @@ function renderPnL(){
         <td><strong>${d.name}</strong></td>
         <td>${badge(crop.cat||'Other',CAT_BADGE[crop.cat]||'bg-brown')}</td>
         <td style="text-align:center;">${d.count}</td>
-        <td style="text-align:right;color:var(--success);font-weight:700;font-family:'DM Mono',monospace;">${fmt(d.income)}</td>
-        <td style="text-align:right;color:var(--danger);font-family:'DM Mono',monospace;">${fmt(d.expense)}</td>
-        <td style="text-align:right;font-weight:700;font-family:'DM Mono',monospace;color:${net>=0?'var(--success)':'var(--danger)'};">${net>=0?'+':''}${fmt(net)}</td>
+        <td style="text-align:right;color:var(--success);font-weight:700;font-family:Menlo,'Courier New',monospace;">${fmt(d.income)}</td>
+        <td style="text-align:right;color:var(--danger);font-family:Menlo,'Courier New',monospace;">${fmt(d.expense)}</td>
+        <td style="text-align:right;font-weight:700;font-family:Menlo,'Courier New',monospace;color:${net>=0?'var(--success)':'var(--danger)'};">${net>=0?'+':''}${fmt(net)}</td>
         <td style="text-align:right;">${margin!=='—'?`<span class="badge ${net>=0?'bg-green':'bg-red'}">${margin}%</span>`:'—'}</td>
       </tr>`;
     }).join('');
@@ -1290,7 +1290,7 @@ function renderPnL(){
   acts.forEach(r=>{if(r.cost>0)typeMap[r.type]=(typeMap[r.type]||0)+(r.cost||0);});
   document.getElementById('pnl-exp-tbody').innerHTML=Object.entries(typeMap).sort((a,b)=>b[1]-a[1]).map(([t,v])=>`<tr>
     <td>${badge(t)}</td>
-    <td style="text-align:right;font-family:'DM Mono',monospace;font-weight:700;">${fmt(v)}</td>
+    <td style="text-align:right;font-family:Menlo,'Courier New',monospace;font-weight:700;">${fmt(v)}</td>
     <td style="text-align:right;">${totalExpense>0?((v/totalExpense)*100).toFixed(1):0}%</td>
   </tr>`).join('');
 }
@@ -1333,9 +1333,9 @@ function renderReports(){
     return `<tr>
       <td style="font-weight:700;text-align:center;">${i===0?'🥇':i===1?'🥈':i===2?'🥉':i+1}</td>
       <td><strong>${d.name}</strong></td>
-      <td style="text-align:right;color:var(--success);font-family:'DM Mono',monospace;">${fmt(d.income)}</td>
-      <td style="text-align:right;color:var(--danger);font-family:'DM Mono',monospace;">${fmt(d.expense)}</td>
-      <td style="text-align:right;font-weight:700;font-family:'DM Mono',monospace;color:${net>=0?'var(--success)':'var(--danger)'};">${net>=0?'+':''}${fmt(net)}</td>
+      <td style="text-align:right;color:var(--success);font-family:Menlo,'Courier New',monospace;">${fmt(d.income)}</td>
+      <td style="text-align:right;color:var(--danger);font-family:Menlo,'Courier New',monospace;">${fmt(d.expense)}</td>
+      <td style="text-align:right;font-weight:700;font-family:Menlo,'Courier New',monospace;color:${net>=0?'var(--success)':'var(--danger)'};">${net>=0?'+':''}${fmt(net)}</td>
       <td>${net>=0?'<span class="badge bg-green">✅ Profitable</span>':'<span class="badge bg-red">⚠️ Loss</span>'}</td>
     </tr>`;
   }).join('');
@@ -1344,7 +1344,7 @@ function renderReports(){
   const costTips={'Planting':'Buy seeds in bulk from cooperatives.','Fertilising':'Test soil first to apply only what is needed.','Pest Control / Spraying':'Use IPM — integrate biological controls.','Worker Task':'Track output per worker to improve productivity.','Land Preparation':'Share equipment with neighbouring farms.','Irrigation':'Use drip irrigation to reduce water costs.'};
   document.getElementById('rep-costs').innerHTML=Object.entries(typeMap).sort((a,b)=>b[1]-a[1]).map(([t,v])=>`<tr>
     <td>${badge(t)}</td>
-    <td style="text-align:right;font-family:'DM Mono',monospace;font-weight:700;">${fmt(v)}</td>
+    <td style="text-align:right;font-family:Menlo,'Courier New',monospace;font-weight:700;">${fmt(v)}</td>
     <td style="text-align:right;">${totalExp>0?((v/totalExp)*100).toFixed(1):0}%</td>
     <td style="font-size:.78rem;color:var(--muted);">${costTips[t]||'Review for optimization.'}</td>
   </tr>`).join('');
@@ -1388,7 +1388,7 @@ function renderDashboard(){
   document.getElementById('dash-recent-act').innerHTML=recent.length
     ?recent.map(r=>`<div style="padding:7px 0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;">
         <div>${badge(r.type)} <span class="ctag" style="margin-left:4px;">${r.cropName}</span></div>
-        <div style="font-family:'DM Mono',monospace;font-size:.72rem;color:var(--muted);">${r.date}</div>
+        <div style="font-family:Menlo,'Courier New',monospace;font-size:.72rem;color:var(--muted);">${r.date}</div>
       </div>`).join('')
     :'<p style="color:var(--muted);font-size:.85rem;padding:10px 0;">No activities yet.</p>';
   // Top crops
@@ -1396,7 +1396,7 @@ function renderDashboard(){
   document.getElementById('dash-top-crops').innerHTML=top.length
     ?top.map(c=>{const n=c.income-c.expense;return`<div style="padding:7px 0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;">
         <span style="font-weight:700;">${c.name}</span>
-        <span style="font-family:'DM Mono',monospace;font-size:.82rem;font-weight:700;color:${n>=0?'var(--success)':'var(--danger)'};">${n>=0?'+':''}KES ${fmt(n)}</span>
+        <span style="font-family:Menlo,'Courier New',monospace;font-size:.82rem;font-weight:700;color:${n>=0?'var(--success)':'var(--danger)'};">${n>=0?'+':''}KES ${fmt(n)}</span>
       </div>`;}).join('')
     :'<p style="color:var(--muted);font-size:.85rem;padding:10px 0;">Log sales and expenses to see top crops.</p>';
 }
@@ -1559,14 +1559,14 @@ function renderPlantingRecords() {
       else if(days<=0) harvestAlert=`<span class="badge bg-red">Overdue!</span>`;
     }
     return `<tr>
-      <td style="font-family:'DM Mono',monospace;font-size:.78rem;">${r.date}</td>
+      <td style="font-family:Menlo,'Courier New',monospace;font-size:.78rem;">${r.date}</td>
       <td><strong>${r.blockName}</strong></td>
       <td><span class="ctag">${r.cropName}</span></td>
       <td style="text-align:center;font-weight:700;">${r.area||'—'}</td>
       <td style="font-size:.78rem;">${r.variety||r.seedQty||'—'}</td>
       <td style="font-size:.78rem;">${r.season||'—'}</td>
-      <td style="font-family:'DM Mono',monospace;font-size:.78rem;">${r.expHarvest||'—'} ${harvestAlert}</td>
-      <td style="font-family:'DM Mono',monospace;font-size:.78rem;">${r.actHarvest||'—'}</td>
+      <td style="font-family:Menlo,'Courier New',monospace;font-size:.78rem;">${r.expHarvest||'—'} ${harvestAlert}</td>
+      <td style="font-family:Menlo,'Courier New',monospace;font-size:.78rem;">${r.actHarvest||'—'}</td>
       <td style="font-size:.78rem;">${r.yield||'—'}</td>
       <td>${statusBadge}</td>
       <td style="text-align:center;"><button class="btn btn-edit btn-sm" onclick="showTab('activities')">${actCount} logs</button></td>
@@ -1581,7 +1581,7 @@ function renderPlantingRecords() {
       active.map(r=>{
         let daysLeft='—',dClass='';
         if(r.expHarvest){const d=Math.ceil((new Date(r.expHarvest)-new Date(today2))/(1000*60*60*24));daysLeft=d<=0?'Overdue!':d+' days';dClass=d<=14?'color:var(--danger);font-weight:700;':d<=30?'color:var(--warn);font-weight:700;':'color:var(--success);';}
-        return `<tr><td><strong>${r.blockName}</strong></td><td><span class="ctag">${r.cropName}</span></td><td>${r.area||'—'} ac</td><td style="font-family:'DM Mono',monospace;font-size:.78rem;">${r.date}</td><td style="font-size:.78rem;">${r.season||'—'}</td><td style="font-family:'DM Mono',monospace;font-size:.78rem;">${r.expHarvest||'—'}</td><td style="${dClass}">${daysLeft}</td></tr>`;
+        return `<tr><td><strong>${r.blockName}</strong></td><td><span class="ctag">${r.cropName}</span></td><td>${r.area||'—'} ac</td><td style="font-family:Menlo,'Courier New',monospace;font-size:.78rem;">${r.date}</td><td style="font-size:.78rem;">${r.season||'—'}</td><td style="font-family:Menlo,'Courier New',monospace;font-size:.78rem;">${r.expHarvest||'—'}</td><td style="${dClass}">${daysLeft}</td></tr>`;
       }).join('')
     }</tbody></table></div>`
     :'<p style="color:var(--muted);font-size:.85rem;padding:8px 0;">No active plantings. Add a planting record above.</p>';
@@ -1616,7 +1616,7 @@ function renderHarvestAlerts(){
     <div style="font-weight:800;color:var(--warn);margin-bottom:6px;">⏰ Harvest Alerts</div>
     ${alerts.map(r=>`<div style="font-size:.84rem;padding:3px 0;display:flex;justify-content:space-between;border-bottom:1px solid #ffe0b2;gap:8px;flex-wrap:wrap;">
       <span><strong>${r.cropName}</strong> in ${r.blockName}</span>
-      <span style="font-family:'DM Mono',monospace;font-weight:700;color:${r.daysLeft<=0?'var(--danger)':r.daysLeft<=14?'var(--danger)':'var(--warn)'};">${r.daysLeft<=0?'⚠️ OVERDUE':'Due in '+r.daysLeft+' days'} (${r.expHarvest})</span>
+      <span style="font-family:Menlo,'Courier New',monospace;font-weight:700;color:${r.daysLeft<=0?'var(--danger)':r.daysLeft<=14?'var(--danger)':'var(--warn)'};">${r.daysLeft<=0?'⚠️ OVERDUE':'Due in '+r.daysLeft+' days'} (${r.expHarvest})</span>
     </div>`).join('')}
   </div>`;
 }
@@ -1689,8 +1689,8 @@ function renderStaff(){
     <tbody>${staff.map(s=>`<tr style="${s.status==='inactive'?'opacity:.55;':''}">
       <td><strong>${s.name}</strong></td>
       <td>${s.role==='supervisor'?'<span class="badge bg-purple">Supervisor</span>':'<span class="badge bg-blue">Field Worker</span>'}</td>
-      <td style="font-family:'DM Mono',monospace;font-weight:700;">KES ${fmt(s.salary)}</td>
-      <td style="font-family:'DM Mono',monospace;">KES ${fmt(dailyRate(s))}/day</td>
+      <td style="font-family:Menlo,'Courier New',monospace;font-weight:700;">KES ${fmt(s.salary)}</td>
+      <td style="font-family:Menlo,'Courier New',monospace;">KES ${fmt(dailyRate(s))}/day</td>
       <td>${s.status==='active'?'<span class="badge bg-green">Active</span>':'<span class="badge bg-red">Inactive</span>'}</td>
       <td style="font-size:.78rem;">${s.notes||'—'}</td>
       <td><button class="btn btn-edit" onclick="openStaffModal('${s.id}')">✏️</button></td>
@@ -1794,16 +1794,16 @@ function renderWorkLog(){
     const totalCost=logs.reduce((s,l)=>s+l.cost,0);
     document.getElementById('wklog-summary').innerHTML=`<div style="display:flex;gap:16px;font-size:.82rem;color:var(--muted);flex-wrap:wrap;">
       <span>Showing <strong>${logs.length}</strong> entries</span>
-      <span>Total days: <strong style="font-family:'DM Mono',monospace;">${totalDays}</strong></span>
-      <span>Total cost: <strong style="font-family:'DM Mono',monospace;color:var(--danger);">KES ${fmt(totalCost)}</strong></span>
+      <span>Total days: <strong style="font-family:Menlo,'Courier New',monospace;">${totalDays}</strong></span>
+      <span>Total cost: <strong style="font-family:Menlo,'Courier New',monospace;color:var(--danger);">KES ${fmt(totalCost)}</strong></span>
     </div>`;
     tbody.innerHTML=logs.map(l=>`<tr>
-      <td style="font-family:'DM Mono',monospace;font-size:.78rem;">${l.date}</td>
+      <td style="font-family:Menlo,'Courier New',monospace;font-size:.78rem;">${l.date}</td>
       <td><strong>${l.workerName}</strong></td>
       <td style="text-align:center;font-weight:700;">${l.days}</td>
       <td style="font-size:.8rem;">${l.task}</td>
       <td>${l.allocId==='overhead'?'<span class="badge bg-brown">Farm Overhead</span>':`<span class="ctag">${l.allocName}</span>`}</td>
-      <td style="font-family:'DM Mono',monospace;font-weight:700;color:var(--danger);">KES ${fmt(l.cost)}</td>
+      <td style="font-family:Menlo,'Courier New',monospace;font-weight:700;color:var(--danger);">KES ${fmt(l.cost)}</td>
       <td style="font-size:.78rem;">${l.season||'—'}</td>
       <td style="font-size:.78rem;">${l.notes||'—'}</td>
       <td><button class="btn btn-danger" onclick="deleteWorkLog('${l.id}')">✕</button></td>
@@ -1830,7 +1830,7 @@ function renderAllocation(){
   document.getElementById('alloc-tbody').innerHTML=Object.entries(map).sort((a,b)=>b[1].cost-a[1].cost).map(([name,v])=>`<tr>
     <td>${name==='Farm Overhead'?'<span class="badge bg-brown">🏠 Farm Overhead</span>':`<span class="ctag">🌿 ${name}</span>`}</td>
     <td style="text-align:center;font-weight:700;">${v.days}</td>
-    <td style="font-family:'DM Mono',monospace;font-weight:700;color:var(--danger);">KES ${fmt(v.cost)}</td>
+    <td style="font-family:Menlo,'Courier New',monospace;font-weight:700;color:var(--danger);">KES ${fmt(v.cost)}</td>
     <td style="text-align:right;">${total>0?((v.cost/total)*100).toFixed(1):0}%</td>
   </tr>`).join('');
 }
@@ -1851,9 +1851,9 @@ function renderOverheads(){
   const ohs=S.get('overheads');
   const total=ohs.reduce((s,o)=>s+o.amount,0);
   document.getElementById('overhead-list').innerHTML=ohs.length
-    ?`<div style="margin-bottom:8px;font-size:.82rem;color:var(--muted);">Total other overheads: <strong style="font-family:'DM Mono',monospace;color:var(--danger);">KES ${fmt(total)}</strong></div>
+    ?`<div style="margin-bottom:8px;font-size:.82rem;color:var(--muted);">Total other overheads: <strong style="font-family:Menlo,'Courier New',monospace;color:var(--danger);">KES ${fmt(total)}</strong></div>
     <div class="tbl-wrap"><table><thead><tr><th>Date</th><th>Description</th><th>Period</th><th>Amount (KES)</th><th></th></tr></thead>
-    <tbody>${ohs.map(o=>`<tr><td style="font-family:'DM Mono',monospace;font-size:.78rem;">${o.date||'—'}</td><td>${o.desc}</td><td style="font-size:.78rem;">${o.period||'—'}</td><td style="font-family:'DM Mono',monospace;font-weight:700;">KES ${fmt(o.amount)}</td><td><button class="btn btn-danger" onclick="deleteOverhead('${o.id}')">✕</button></td></tr>`).join('')}</tbody>
+    <tbody>${ohs.map(o=>`<tr><td style="font-family:Menlo,'Courier New',monospace;font-size:.78rem;">${o.date||'—'}</td><td>${o.desc}</td><td style="font-size:.78rem;">${o.period||'—'}</td><td style="font-family:Menlo,'Courier New',monospace;font-weight:700;">KES ${fmt(o.amount)}</td><td><button class="btn btn-danger" onclick="deleteOverhead('${o.id}')">✕</button></td></tr>`).join('')}</tbody>
     </table></div>`
     :'<p style="color:var(--muted);font-size:.82rem;">No overheads recorded yet.</p>';
 }
@@ -1968,7 +1968,7 @@ function renderBackup() {
     ? `<div class="tbl-wrap"><table>
         <thead><tr><th>Date & Time</th><th>File</th><th>Activities</th><th>Type</th></tr></thead>
         <tbody>${log.map(l=>`<tr>
-          <td style="font-family:'DM Mono',monospace;font-size:.78rem;">${new Date(l.date).toLocaleString('en-KE')}</td>
+          <td style="font-family:Menlo,'Courier New',monospace;font-size:.78rem;">${new Date(l.date).toLocaleString('en-KE')}</td>
           <td style="font-size:.78rem;">${l.filename}</td>
           <td style="text-align:center;">${l.records}</td>
           <td>${l.type==='restore'?'<span class="badge bg-orange">Restore</span>':'<span class="badge bg-green">Backup</span>'}</td>
