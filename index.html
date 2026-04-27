@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Shamba Manager</title>
 <style>
-/* System fonts — no internet needed, look great on iPhone */
+/* System fonts — no internet needed, look great on iPhone — v3 */
 
 :root {
 –earth: #2c1a0e;
@@ -33,57 +33,58 @@
 –sh: 0 2px 16px rgba(44,26,14,0.10);
 }
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:-apple-system,‘Helvetica Neue’,Arial,sans-serif;background:var(–bg);color:var(–text);min-height:100vh;font-size:15px;}
+html{background:#f7f2eb;}
+body{font-family:-apple-system,‘Helvetica Neue’,Arial,sans-serif;background:#f7f2eb;color:#1e140a;min-height:100vh;font-size:15px;}
 
-.topbar{background:var(–earth);color:#fff;padding:0 16px;display:flex;align-items:center;justify-content:space-between;height:54px;position:sticky;top:0;z-index:200;box-shadow:0 2px 10px rgba(0,0,0,0.3);}
-.brand{font-family:Georgia,‘Times New Roman’,serif;font-size:1.25rem;font-weight:700;color:var(–sun);letter-spacing:.02em;}
-.brand span{color:#c8a878;font-size:.7rem;font-weight:400;display:block;line-height:1;font-family:-apple-system,monospace;}
-.topbar-date{font-family:Menlo,monospace;font-size:.7rem;color:#c8a878;}
+.topbar{background:#2c1a0e !important;color:#fff !important;padding:0 16px;display:flex;align-items:center;justify-content:space-between;height:54px;position:sticky;top:0;z-index:200;box-shadow:0 2px 10px rgba(0,0,0,0.3);}
+.brand{font-family:Georgia,‘Times New Roman’,serif;font-size:1.25rem;font-weight:700;color:#f0a500 !important;letter-spacing:.02em;}
+.brand span{color:#c8a878 !important;font-size:.7rem;font-weight:400;display:block;line-height:1;font-family:-apple-system,monospace;}
+.topbar-date{font-family:Menlo,monospace;font-size:.7rem;color:#c8a878 !important;}
 
-.tabnav{background:var(–soil);display:flex;overflow-x:auto;scrollbar-width:none;position:sticky;top:54px;z-index:199;}
+.tabnav{background:#5c3317 !important;display:flex;overflow-x:auto;scrollbar-width:none;position:sticky;top:54px;z-index:199;}
 .tabnav::-webkit-scrollbar{display:none;}
 .tab-btn{flex-shrink:0;padding:11px 16px;color:#c8a878;background:none;border:none;font-family:-apple-system,‘Helvetica Neue’,sans-serif;font-size:.78rem;font-weight:800;cursor:pointer;border-bottom:3px solid transparent;transition:all .18s;white-space:nowrap;text-transform:uppercase;letter-spacing:.07em;}
-.tab-btn.active{color:var(–sun);border-bottom-color:var(–sun);background:rgba(240,165,0,.1);}
+.tab-btn.active{color:#f0a500 !important;border-bottom-color:#f0a500 !important;background:rgba(240,165,0,.1);}
 .tab-btn:hover{color:#fff;}
 
 .main{padding:18px;max-width:960px;margin:0 auto;}
 .section{display:none;}.section.active{display:block;}
 
-.card{background:var(–card);border-radius:var(–r);border:1px solid var(–border);box-shadow:var(–sh);padding:18px;margin-bottom:16px;}
-.card-title{font-family:Georgia,serif;font-size:1rem;font-weight:700;color:var(–earth);margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid var(–border);display:flex;align-items:center;gap:8px;}
+.card{background:#ffffff !important;border-radius:12px;border:1px solid #e0d4c4 !important;box-shadow:0 2px 16px rgba(44,26,14,0.10);padding:18px;margin-bottom:16px;}
+.card-title{font-family:Georgia,serif;font-size:1rem;font-weight:700;color:#2c1a0e !important;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid #e0d4c4;display:flex;align-items:center;gap:8px;}
 
 .sec-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;flex-wrap:wrap;gap:10px;}
-.sec-title{font-family:Georgia,‘Times New Roman’,serif;font-size:1.35rem;font-weight:700;color:var(–earth);}
-.sec-sub{font-size:.78rem;color:var(–muted);margin-top:2px;}
+.sec-title{font-family:Georgia,‘Times New Roman’,serif;font-size:1.35rem;font-weight:700;color:#2c1a0e;}
+.sec-sub{font-size:.78rem;color:#7a6550;margin-top:2px;}
 
 .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin-bottom:18px;}
-.stat{background:var(–card);border-radius:var(–r);border:1px solid var(–border);padding:14px 12px;text-align:center;box-shadow:var(–sh);}
+.stat{background:#ffffff;border-radius:12px;border:1px solid #e0d4c4;padding:14px 12px;text-align:center;box-shadow:0 2px 16px rgba(44,26,14,0.10);}
 .stat .si{font-size:1.6rem;margin-bottom:4px;}
-.stat .sv{font-family:Georgia,‘Times New Roman’,serif;font-size:1.25rem;font-weight:700;color:var(–earth);}
-.stat .sl{font-size:.68rem;color:var(–muted);text-transform:uppercase;letter-spacing:.07em;font-weight:700;margin-top:2px;}
-.stat.g .sv{color:var(–success);}.stat.r .sv{color:var(–danger);}.stat.o .sv{color:var(–warn);}
+.stat .sv{font-family:Georgia,‘Times New Roman’,serif;font-size:1.25rem;font-weight:700;color:#2c1a0e;}
+.stat .sl{font-size:.68rem;color:#7a6550;text-transform:uppercase;letter-spacing:.07em;font-weight:700;margin-top:2px;}
+.stat.g .sv{color:#2a8a40;}.stat.r .sv{color:#b92d20;}.stat.o .sv{color:#d4720a;}
 
 .fg{display:flex;flex-direction:column;gap:4px;margin-bottom:2px;}
-.fg label{font-size:.7rem;font-weight:800;color:var(–muted);text-transform:uppercase;letter-spacing:.07em;}
-.fg input,.fg select,.fg textarea{padding:9px 11px;border:1.5px solid var(–border);border-radius:8px;font-family:-apple-system,‘Helvetica Neue’,Arial,sans-serif;font-size:.88rem;color:var(–text);background:#fdfaf6;outline:none;transition:border-color .18s;}
-.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(–clay);background:#fff;}
+.fg label{font-size:.7rem;font-weight:800;color:#7a6550;text-transform:uppercase;letter-spacing:.07em;}
+.fg input,.fg select,.fg textarea{padding:9px 11px;border:1.5px solid #e0d4c4;border-radius:8px;font-family:-apple-system,‘Helvetica Neue’,Arial,sans-serif;font-size:.88rem;color:#1e140a;background:#fdfaf6;outline:none;transition:border-color .18s;}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:#8b4513;background:#fff;}
 .fg textarea{resize:vertical;min-height:64px;}
 .form-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:12px;}
 
 .btn{padding:9px 20px;border-radius:8px;border:none;font-family:-apple-system,‘Helvetica Neue’,Arial,sans-serif;font-size:.88rem;font-weight:700;cursor:pointer;transition:all .16s;display:inline-flex;align-items:center;gap:6px;}
-.btn-primary{background:var(–leaf);color:#fff;}.btn-primary:hover{background:#1e4d1e;transform:translateY(-1px);}
-.btn-warn{background:var(–warn);color:#fff;}.btn-warn:hover{background:#a05508;}
-.btn-danger{background:var(–danger);color:#fff;padding:5px 10px;font-size:.76rem;}.btn-danger:hover{background:#8a2218;}
+.btn-primary{background:#2e6b2e;color:#fff;}.btn-primary:hover{background:#1e4d1e;transform:translateY(-1px);}
+.btn-warn{background:#d4720a;color:#fff;}.btn-warn:hover{background:#a05508;}
+.btn-danger{background:#b92d20;color:#fff;padding:5px 10px;font-size:.76rem;}.btn-danger:hover{background:#8a2218;}
 .btn-edit{background:#e8f0fe;color:#1a56c8;padding:5px 10px;font-size:.76rem;border:1px solid #c0d4fa;}.btn-edit:hover{background:#c0d4fa;}
-.btn-sky{background:var(–sky);color:#fff;}.btn-sky:hover{background:#135a80;}
+.btn-sky{background:#1976a8;color:#fff;}.btn-sky:hover{background:#135a80;}
 .btn-sm{padding:7px 14px;font-size:.8rem;}
-.btn-ghost{background:transparent;border:1.5px solid var(–border);color:var(–muted);}.btn-ghost:hover{border-color:var(–clay);color:var(–clay);}
+.btn-ghost{background:transparent;border:1.5px solid #e0d4c4;color:#7a6550;}.btn-ghost:hover{border-color:#8b4513;color:#8b4513;}
 
 .tbl-wrap{overflow-x:auto;}
 table{width:100%;border-collapse:collapse;font-size:.83rem;}
-thead tr{background:var(–earth);color:#f0e0c8;}
+thead tr{background:#2c1a0e;color:#f0e0c8;}
 thead th{padding:9px 11px;text-align:left;font-family:Menlo,‘Courier New’,monospace;font-size:.68rem;letter-spacing:.07em;text-transform:uppercase;white-space:nowrap;}
-tbody tr{border-bottom:1px solid var(–border);transition:background .13s;}
+tbody tr{border-bottom:1px solid #e0d4c4;transition:background .13s;}
 tbody tr:hover{background:#fdf5ea;}
 tbody td{padding:9px 11px;vertical-align:middle;}
 
@@ -94,27 +95,27 @@ tbody td{padding:9px 11px;vertical-align:middle;}
 .bg-teal{background:#e0f2f1;color:#004d40;}.bg-gold{background:#fff8e1;color:#ff6f00;}
 
 .fbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;align-items:center;}
-.fbar select,.fbar input{padding:7px 10px;border:1.5px solid var(–border);border-radius:7px;font-family:-apple-system,‘Helvetica Neue’,Arial,sans-serif;font-size:.83rem;background:#fff;color:var(–text);outline:none;}
-.fbar select:focus,.fbar input:focus{border-color:var(–clay);}
+.fbar select,.fbar input{padding:7px 10px;border:1.5px solid #e0d4c4;border-radius:7px;font-family:-apple-system,‘Helvetica Neue’,Arial,sans-serif;font-size:.83rem;background:#fff;color:#1e140a;outline:none;}
+.fbar select:focus,.fbar input:focus{border-color:#8b4513;}
 
-.empty{text-align:center;padding:36px 18px;color:var(–muted);}
+.empty{text-align:center;padding:36px 18px;color:#7a6550;}
 .empty .ei{font-size:2.8rem;margin-bottom:8px;}
 .empty p{font-size:.85rem;}
 
-.ctag{display:inline-block;background:var(–leaf);color:#fff;border-radius:20px;padding:2px 10px;font-size:.7rem;font-weight:700;margin:1px;}
+.ctag{display:inline-block;background:#2e6b2e;color:#fff;border-radius:20px;padding:2px 10px;font-size:.7rem;font-weight:700;margin:1px;}
 
 .timeline{position:relative;padding-left:22px;}
-.timeline::before{content:’’;position:absolute;left:7px;top:0;bottom:0;width:2px;background:var(–border);}
+.timeline::before{content:’’;position:absolute;left:7px;top:0;bottom:0;width:2px;background:#e0d4c4;}
 .tl-item{position:relative;margin-bottom:14px;}
-.tl-item::before{content:’’;position:absolute;left:-19px;top:10px;width:10px;height:10px;border-radius:50%;background:var(–leaf);border:2px solid #fff;box-shadow:0 0 0 2px var(–leaf);}
-.tl-card{background:var(–card);border:1px solid var(–border);border-radius:10px;padding:12px 14px;box-shadow:0 1px 6px rgba(44,26,14,.07);}
+.tl-item::before{content:’’;position:absolute;left:-19px;top:10px;width:10px;height:10px;border-radius:50%;background:#2e6b2e;border:2px solid #fff;box-shadow:0 0 0 2px #2e6b2e;}
+.tl-card{background:#ffffff;border:1px solid #e0d4c4;border-radius:10px;padding:12px 14px;box-shadow:0 1px 6px rgba(44,26,14,.07);}
 .tl-header{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:6px;margin-bottom:6px;}
-.tl-date{font-family:Menlo,‘Courier New’,monospace;font-size:.72rem;color:var(–muted);}
+.tl-date{font-family:Menlo,‘Courier New’,monospace;font-size:.72rem;color:#7a6550;}
 .tl-actions{display:flex;gap:6px;}
 .tl-meta{display:flex;flex-wrap:wrap;gap:6px;align-items:center;}
-.tl-notes{font-size:.82rem;color:var(–muted);margin-top:6px;font-style:italic;}
+.tl-notes{font-size:.82rem;color:#7a6550;margin-top:6px;font-style:italic;}
 .tl-cost{font-family:Menlo,‘Courier New’,monospace;font-size:.82rem;font-weight:700;}
-.tl-cost.expense{color:var(–danger);}.tl-cost.income{color:var(–success);}
+.tl-cost.expense{color:#b92d20;}.tl-cost.income{color:#2a8a40;}
 
 .pnl-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:16px;}
 .pnl-box{border-radius:10px;padding:14px;text-align:center;}
@@ -122,15 +123,15 @@ tbody td{padding:9px 11px;vertical-align:middle;}
 .pnl-box.exp{background:#fce4ec;border:2px solid #ef9a9a;}
 .pnl-box.net{background:#fff8e1;border:2px solid #ffd54f;}
 .pnl-val{font-family:Georgia,‘Times New Roman’,serif;font-size:1.25rem;font-weight:700;margin-bottom:3px;}
-.pnl-box.inc .pnl-val{color:var(–success);}
-.pnl-box.exp .pnl-val{color:var(–danger);}
-.pnl-box.net .pnl-val{color:var(–warn);}
-.pnl-lbl{font-size:.68rem;font-weight:800;color:var(–muted);text-transform:uppercase;letter-spacing:.07em;}
+.pnl-box.inc .pnl-val{color:#2a8a40;}
+.pnl-box.exp .pnl-val{color:#b92d20;}
+.pnl-box.net .pnl-val{color:#d4720a;}
+.pnl-lbl{font-size:.68rem;font-weight:800;color:#7a6550;text-transform:uppercase;letter-spacing:.07em;}
 
 /* CHARTS */
 .charts-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
-.chart-box{background:var(–card);border-radius:var(–r);border:1px solid var(–border);box-shadow:var(–sh);padding:16px;}
-.chart-title{font-family:Georgia,‘Times New Roman’,serif;font-size:.9rem;font-weight:700;color:var(–earth);margin-bottom:12px;text-align:center;}
+.chart-box{background:#ffffff;border-radius:12px;border:1px solid #e0d4c4;box-shadow:0 2px 16px rgba(44,26,14,0.10);padding:16px;}
+.chart-title{font-family:Georgia,‘Times New Roman’,serif;font-size:.9rem;font-weight:700;color:#2c1a0e;margin-bottom:12px;text-align:center;}
 .chart-wrap{position:relative;display:flex;justify-content:center;align-items:center;}
 canvas{max-width:100%;height:auto;}
 .chart-legend{margin-top:12px;}
@@ -141,18 +142,18 @@ canvas{max-width:100%;height:auto;}
 .season-compare-table tbody td{font-family:Menlo,‘Courier New’,monospace;font-size:.8rem;}
 
 /* REPORTS */
-.insight-card{background:var(–card);border-radius:var(–r);border:1px solid var(–border);box-shadow:var(–sh);padding:16px;margin-bottom:12px;display:flex;gap:14px;align-items:flex-start;}
+.insight-card{background:#ffffff;border-radius:12px;border:1px solid #e0d4c4;box-shadow:0 2px 16px rgba(44,26,14,0.10);padding:16px;margin-bottom:12px;display:flex;gap:14px;align-items:flex-start;}
 .insight-icon{font-size:1.8rem;flex-shrink:0;}
-.insight-title{font-family:Georgia,‘Times New Roman’,serif;font-size:.95rem;font-weight:700;color:var(–earth);margin-bottom:4px;}
-.insight-body{font-size:.82rem;color:var(–muted);line-height:1.6;}
-.insight-val{font-family:Menlo,‘Courier New’,monospace;font-weight:700;color:var(–earth);}
+.insight-title{font-family:Georgia,‘Times New Roman’,serif;font-size:.95rem;font-weight:700;color:#2c1a0e;margin-bottom:4px;}
+.insight-body{font-size:.82rem;color:#7a6550;line-height:1.6;}
+.insight-val{font-family:Menlo,‘Courier New’,monospace;font-weight:700;color:#2c1a0e;}
 
 /* MODAL */
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:500;align-items:center;justify-content:center;padding:16px;}
 .modal-overlay.open{display:flex;}
 .modal{background:#fff;border-radius:14px;padding:22px;width:100%;max-width:560px;max-height:90vh;overflow-y:auto;box-shadow:0 8px 40px rgba(0,0,0,.25);}
-.modal-title{font-family:Georgia,‘Times New Roman’,serif;font-size:1.1rem;font-weight:700;color:var(–earth);margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid var(–border);}
-.modal-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:16px;padding-top:12px;border-top:1px solid var(–border);}
+.modal-title{font-family:Georgia,‘Times New Roman’,serif;font-size:1.1rem;font-weight:700;color:#2c1a0e;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid #e0d4c4;}
+.modal-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:16px;padding-top:12px;border-top:1px solid #e0d4c4;}
 
 @media(max-width:600px){
 .pnl-grid{grid-template-columns:1fr;}
@@ -192,7 +193,7 @@ canvas{max-width:100%;height:auto;}
     <div id="staff-overhead-alert"></div>
     <div class="sec-header">
       <div><div class="sec-title">Farm Overview</div><div class="sec-sub">Summary across all crops and seasons</div></div>
-      <select id="dash-season" onchange="renderDashboard()" style="padding:7px 10px;border:1.5px solid var(--border);border-radius:8px;font-family:Nunito,sans-serif;font-size:.83rem;background:#fff;outline:none;">
+      <select id="dash-season" onchange="renderDashboard()" style="padding:7px 10px;border:1.5px solid #e0d4c4;border-radius:8px;font-family:Nunito,sans-serif;font-size:.83rem;background:#fff;outline:none;">
         <option value="all">All Seasons</option>
       </select>
     </div>
@@ -397,7 +398,7 @@ canvas{max-width:100%;height:auto;}
   <div id="tab-reports" class="section">
     <div class="sec-header"><div><div class="sec-title">💡 Reports & Insights</div><div class="sec-sub">Actionable analysis of your farm performance</div></div>
       <div style="display:flex;gap:8px;">
-        <select id="rep-season" onchange="renderReports()" style="padding:7px 10px;border:1.5px solid var(--border);border-radius:8px;font-family:Nunito,sans-serif;font-size:.83rem;background:#fff;outline:none;">
+        <select id="rep-season" onchange="renderReports()" style="padding:7px 10px;border:1.5px solid #e0d4c4;border-radius:8px;font-family:Nunito,sans-serif;font-size:.83rem;background:#fff;outline:none;">
           <option value="">All Seasons</option>
         </select>
       </div>
@@ -439,7 +440,7 @@ canvas{max-width:100%;height:auto;}
 
 ```
 <!-- Active plantings summary -->
-<div class="card" style="border:2px solid var(--leaf);">
+<div class="card" style="border:2px solid #2e6b2e;">
   <div class="card-title">🌿 Currently In The Ground</div>
   <div id="active-plantings"></div>
 </div>
@@ -539,15 +540,15 @@ canvas{max-width:100%;height:auto;}
 </div>
 
 <!-- Monthly overhead summary -->
-<div class="card" style="border:2px solid var(--warn);background:#fffaf0;">
-  <div class="card-title" style="color:var(--warn);">💼 Monthly Payroll Overview</div>
+<div class="card" style="border:2px solid #d4720a;background:#fffaf0;">
+  <div class="card-title" style="color:#d4720a;">💼 Monthly Payroll Overview</div>
   <div id="payroll-overview"></div>
 </div>
 
 <!-- Daily work log -->
 <div class="card">
   <div class="card-title">📅 Log Daily Work</div>
-  <p style="font-size:.82rem;color:var(--muted);margin-bottom:14px;">Log each worker's day. Use multiple entries if a worker split their day between crops (e.g. 0.5 day on Plot 1, 0.5 day on Plot 2).</p>
+  <p style="font-size:.82rem;color:#7a6550;margin-bottom:14px;">Log each worker's day. Use multiple entries if a worker split their day between crops (e.g. 0.5 day on Plot 1, 0.5 day on Plot 2).</p>
   <div class="form-row">
     <div class="fg"><label>Date *</label><input type="date" id="wk-date"></div>
     <div class="fg"><label>Worker *</label><select id="wk-worker"><option value="">— Select worker —</option></select></div>
@@ -576,8 +577,8 @@ canvas{max-width:100%;height:auto;}
     <div class="fg"><label>Season</label><select id="wk-season"><option value="">— None —</option></select></div>
     <div class="fg"><label>Notes</label><input type="text" id="wk-notes" placeholder="e.g. Cleared eastern rows"></div>
   </div>
-  <div id="wk-cost-preview" style="background:var(--leaf-light);border-radius:8px;padding:10px 14px;margin-bottom:12px;font-size:.85rem;display:none;">
-    <strong>Cost preview:</strong> <span id="wk-cost-val" style="font-family:Menlo,'Courier New',monospace;font-weight:700;color:var(--leaf);"></span>
+  <div id="wk-cost-preview" style="background:#e8f5e8;border-radius:8px;padding:10px 14px;margin-bottom:12px;font-size:.85rem;display:none;">
+    <strong>Cost preview:</strong> <span id="wk-cost-val" style="font-family:Menlo,'Courier New',monospace;font-weight:700;color:#2e6b2e;"></span>
   </div>
   <button class="btn btn-primary" onclick="saveWorkLog()">✅ Save Work Log</button>
 </div>
@@ -613,7 +614,7 @@ canvas{max-width:100%;height:auto;}
 <!-- Other farm overheads -->
 <div class="card">
   <div class="card-title">🏠 Other Farm Overheads</div>
-  <p style="font-size:.82rem;color:var(--muted);margin-bottom:12px;">Record non-labour overhead costs — fuel, equipment maintenance, repairs, electricity etc.</p>
+  <p style="font-size:.82rem;color:#7a6550;margin-bottom:12px;">Record non-labour overhead costs — fuel, equipment maintenance, repairs, electricity etc.</p>
   <div class="form-row">
     <div class="fg"><label>Date</label><input type="date" id="oh-date"></div>
     <div class="fg"><label>Description</label><input type="text" id="oh-desc" placeholder="e.g. Generator fuel, fence repair"></div>
@@ -656,7 +657,7 @@ canvas{max-width:100%;height:auto;}
         </div>
       </div>
       <div class="fg" style="margin-bottom:4px;"><label>Notes</label><textarea id="st-notes" placeholder="e.g. Specialist in irrigation, replaced John Kamau"></textarea></div>
-      <div id="st-daily-rate" style="background:var(--leaf-light);border-radius:8px;padding:10px;margin-bottom:12px;font-size:.85rem;display:none;">
+      <div id="st-daily-rate" style="background:#e8f5e8;border-radius:8px;padding:10px;margin-bottom:12px;font-size:.85rem;display:none;">
         Daily rate: <strong id="st-rate-val" style="font-family:Menlo,'Courier New',monospace;"></strong>
       </div>
       <div class="modal-actions">
@@ -675,20 +676,20 @@ canvas{max-width:100%;height:auto;}
 
 ```
 <!-- Status card -->
-<div class="card" style="border:2px solid var(--leaf);background:#f0faf0;">
+<div class="card" style="border:2px solid #2e6b2e;background:#f0faf0;">
   <div class="card-title">📊 Current Data Status</div>
   <div class="stat-grid" id="backup-stats"></div>
-  <div style="font-size:.8rem;color:var(--muted);margin-top:4px;" id="backup-last-saved"></div>
+  <div style="font-size:.8rem;color:#7a6550;margin-top:4px;" id="backup-last-saved"></div>
 </div>
 
 <!-- BACKUP -->
 <div class="card">
   <div class="card-title">⬇️ Create a Backup</div>
-  <p style="font-size:.88rem;color:var(--muted);margin-bottom:16px;line-height:1.7;">
+  <p style="font-size:.88rem;color:#7a6550;margin-bottom:16px;line-height:1.7;">
     This saves <strong>everything</strong> — all crops, activities, seasons, and records — into one backup file (<code>.json</code>). 
     Save it to <strong>iCloud Drive</strong> or <strong>Google Drive</strong> so it's always safe.
   </p>
-  <div style="background:var(--sun-light);border-radius:10px;padding:14px;margin-bottom:16px;font-size:.82rem;line-height:1.8;border:1px solid #f0d080;">
+  <div style="background:#fff3cd;border-radius:10px;padding:14px;margin-bottom:16px;font-size:.82rem;line-height:1.8;border:1px solid #f0d080;">
     <strong>📱 iPhone instructions after tapping Backup:</strong><br>
     1. A file download will start<br>
     2. Tap <strong>"Save to Files"</strong> when prompted<br>
@@ -700,9 +701,9 @@ canvas{max-width:100%;height:auto;}
 </div>
 
 <!-- RESTORE -->
-<div class="card" style="border:2px solid var(--warn);">
-  <div class="card-title" style="color:var(--warn);">⬆️ Restore from Backup</div>
-  <p style="font-size:.88rem;color:var(--muted);margin-bottom:16px;line-height:1.7;">
+<div class="card" style="border:2px solid #d4720a;">
+  <div class="card-title" style="color:#d4720a;">⬆️ Restore from Backup</div>
+  <p style="font-size:.88rem;color:#7a6550;margin-bottom:16px;line-height:1.7;">
     Use this if you ever lose your data or switch to a new phone/browser. 
     Select the <code>.json</code> backup file you saved earlier and all your data will be restored instantly.
   </p>
@@ -711,18 +712,18 @@ canvas{max-width:100%;height:auto;}
     Make a fresh backup first if you have new entries you want to keep.
   </div>
   <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;">
-    <label style="display:inline-flex;align-items:center;gap:8px;background:var(--warn);color:#fff;padding:11px 20px;border-radius:8px;font-weight:700;font-size:.9rem;cursor:pointer;">
+    <label style="display:inline-flex;align-items:center;gap:8px;background:#d4720a;color:#fff;padding:11px 20px;border-radius:8px;font-weight:700;font-size:.9rem;cursor:pointer;">
       📂 Choose Backup File
       <input type="file" id="restore-file" accept=".json" style="display:none;" onchange="restoreBackup(this)">
     </label>
-    <span id="restore-filename" style="font-size:.82rem;color:var(--muted);font-family:Menlo,'Courier New',monospace;"></span>
+    <span id="restore-filename" style="font-size:.82rem;color:#7a6550;font-family:Menlo,'Courier New',monospace;"></span>
   </div>
 </div>
 
 <!-- AUTO REMINDER -->
 <div class="card">
   <div class="card-title">⏰ Backup Reminder</div>
-  <p style="font-size:.85rem;color:var(--muted);margin-bottom:14px;line-height:1.7;">
+  <p style="font-size:.85rem;color:#7a6550;margin-bottom:14px;line-height:1.7;">
     The app will remind you to back up if you haven't done so in 7 days. 
     You can also manually check your last backup date above.
   </p>
@@ -1004,7 +1005,7 @@ function renderCatalog() {
   empty.style.display='none';
   tbody.innerHTML=crops.map(c=>`<tr>
     <td><strong>${c.name}</strong></td>
-    <td style="color:var(--muted);font-size:.82rem;">${c.local||'—'}</td>
+    <td style="color:#7a6550;font-size:.82rem;">${c.local||'—'}</td>
     <td>${badge(c.cat,CAT_BADGE[c.cat]||'bg-brown')}</td>
     <td style="font-size:.8rem;">${c.season||'—'}</td>
     <td style="font-size:.8rem;max-width:180px;">${c.notes||'—'}</td>
@@ -1068,9 +1069,9 @@ function renderSeasons(){
         <td style="font-family:Menlo,'Courier New',monospace;font-size:.8rem;">${s.start||'—'}</td>
         <td style="font-family:Menlo,'Courier New',monospace;font-size:.8rem;">${s.end||'—'}</td>
         <td style="text-align:center;">${sa.length}</td>
-        <td style="text-align:right;color:var(--success);font-family:Menlo,'Courier New',monospace;">${fmt(inc)}</td>
-        <td style="text-align:right;color:var(--danger);font-family:Menlo,'Courier New',monospace;">${fmt(exp)}</td>
-        <td style="text-align:right;font-weight:700;font-family:Menlo,'Courier New',monospace;color:${net>=0?'var(--success)':'var(--danger)'};">${net>=0?'+':''}${fmt(net)}</td>
+        <td style="text-align:right;color:#2a8a40;font-family:Menlo,'Courier New',monospace;">${fmt(inc)}</td>
+        <td style="text-align:right;color:#b92d20;font-family:Menlo,'Courier New',monospace;">${fmt(exp)}</td>
+        <td style="text-align:right;font-weight:700;font-family:Menlo,'Courier New',monospace;color:${net>=0?'#2a8a40':'#b92d20'};">${net>=0?'+':''}${fmt(net)}</td>
         <td style="font-size:.8rem;">${s.notes||'—'}</td>
         <td><button class="btn btn-danger" onclick="deleteSeason('${s.id}')">✕</button></td>
       </tr>`;
@@ -1205,7 +1206,7 @@ function renderCropView(){
   document.getElementById('cv-pnl').innerHTML=`
     <div class="pnl-box inc"><div class="pnl-val">KES ${fmt(totalIncome)}</div><div class="pnl-lbl">Total Revenue</div></div>
     <div class="pnl-box exp"><div class="pnl-val">KES ${fmt(totalExpense)}</div><div class="pnl-lbl">Total Expenses</div></div>
-    <div class="pnl-box net"><div class="pnl-val" style="color:${net>=0?'var(--success)':'var(--danger)'}">KES ${fmt(net)}</div><div class="pnl-lbl">${net>=0?'Net Profit':'Net Loss'}</div></div>
+    <div class="pnl-box net"><div class="pnl-val" style="color:${net>=0?'#2a8a40':'#b92d20'}">KES ${fmt(net)}</div><div class="pnl-lbl">${net>=0?'Net Profit':'Net Loss'}</div></div>
   `;
   // Cost breakdown pie
   const bmap={};
@@ -1241,7 +1242,7 @@ function renderPnL(){
   document.getElementById('pnl-totals').innerHTML=`
     <div class="pnl-box inc"><div class="pnl-val">KES ${fmt(totalIncome)}</div><div class="pnl-lbl">Total Revenue</div></div>
     <div class="pnl-box exp"><div class="pnl-val">KES ${fmt(totalExpense)}</div><div class="pnl-lbl">Total Expenses</div></div>
-    <div class="pnl-box net"><div class="pnl-val" style="color:${net>=0?'var(--success)':'var(--danger)'}">KES ${fmt(net)}</div><div class="pnl-lbl">${net>=0?'Net Profit':'Net Loss'}</div></div>
+    <div class="pnl-box net"><div class="pnl-val" style="color:${net>=0?'#2a8a40':'#b92d20'}">KES ${fmt(net)}</div><div class="pnl-lbl">${net>=0?'Net Profit':'Net Loss'}</div></div>
   `;
   // Build crop map
   const cropMap={};
@@ -1278,9 +1279,9 @@ function renderPnL(){
         <td><strong>${d.name}</strong></td>
         <td>${badge(crop.cat||'Other',CAT_BADGE[crop.cat]||'bg-brown')}</td>
         <td style="text-align:center;">${d.count}</td>
-        <td style="text-align:right;color:var(--success);font-weight:700;font-family:Menlo,'Courier New',monospace;">${fmt(d.income)}</td>
-        <td style="text-align:right;color:var(--danger);font-family:Menlo,'Courier New',monospace;">${fmt(d.expense)}</td>
-        <td style="text-align:right;font-weight:700;font-family:Menlo,'Courier New',monospace;color:${net>=0?'var(--success)':'var(--danger)'};">${net>=0?'+':''}${fmt(net)}</td>
+        <td style="text-align:right;color:#2a8a40;font-weight:700;font-family:Menlo,'Courier New',monospace;">${fmt(d.income)}</td>
+        <td style="text-align:right;color:#b92d20;font-family:Menlo,'Courier New',monospace;">${fmt(d.expense)}</td>
+        <td style="text-align:right;font-weight:700;font-family:Menlo,'Courier New',monospace;color:${net>=0?'#2a8a40':'#b92d20'};">${net>=0?'+':''}${fmt(net)}</td>
         <td style="text-align:right;">${margin!=='—'?`<span class="badge ${net>=0?'bg-green':'bg-red'}">${margin}%</span>`:'—'}</td>
       </tr>`;
     }).join('');
@@ -1317,7 +1318,7 @@ function renderReports(){
   // Insights
   const insights=[];
   if(best && best.income-best.expense>0) insights.push({icon:'🏆',title:`Most Profitable: ${best.name}`,body:`Net profit of <span class="insight-val">KES ${fmt(best.income-best.expense)}</span>. Revenue: KES ${fmt(best.income)}, Expenses: KES ${fmt(best.expense)}. Consider increasing acreage for this crop next season.`});
-  if(worst && worst.income-worst.expense<0) insights.push({icon:'⚠️',title:`Loss-Making Crop: ${worst.name}`,body:`Net loss of <span class="insight-val" style="color:var(--danger)">KES ${fmt(Math.abs(worst.income-worst.expense))}</span>. Review input costs or consider discontinuing this crop if trend continues.`});
+  if(worst && worst.income-worst.expense<0) insights.push({icon:'⚠️',title:`Loss-Making Crop: ${worst.name}`,body:`Net loss of <span class="insight-val" style="color:#b92d20">KES ${fmt(Math.abs(worst.income-worst.expense))}</span>. Review input costs or consider discontinuing this crop if trend continues.`});
   const topCost=Object.entries(typeMap).sort((a,b)=>b[1]-a[1])[0];
   if(topCost) insights.push({icon:'💸',title:`Highest Cost Area: ${topCost[0]}`,body:`Spent <span class="insight-val">KES ${fmt(topCost[1])}</span> on ${topCost[0]}, which is ${totalExp>0?((topCost[1]/totalExp)*100).toFixed(1):0}% of all expenses. Look for bulk purchase discounts or labour efficiency improvements.`});
   if(totalIncome>0) insights.push({icon:'📊',title:'Overall Margin',body:`Revenue KES ${fmt(totalIncome)}, Expenses KES ${fmt(totalExpense)}. Overall margin: <span class="insight-val">${((( totalIncome-totalExpense)/totalIncome)*100).toFixed(1)}%</span>.`});
@@ -1333,9 +1334,9 @@ function renderReports(){
     return `<tr>
       <td style="font-weight:700;text-align:center;">${i===0?'🥇':i===1?'🥈':i===2?'🥉':i+1}</td>
       <td><strong>${d.name}</strong></td>
-      <td style="text-align:right;color:var(--success);font-family:Menlo,'Courier New',monospace;">${fmt(d.income)}</td>
-      <td style="text-align:right;color:var(--danger);font-family:Menlo,'Courier New',monospace;">${fmt(d.expense)}</td>
-      <td style="text-align:right;font-weight:700;font-family:Menlo,'Courier New',monospace;color:${net>=0?'var(--success)':'var(--danger)'};">${net>=0?'+':''}${fmt(net)}</td>
+      <td style="text-align:right;color:#2a8a40;font-family:Menlo,'Courier New',monospace;">${fmt(d.income)}</td>
+      <td style="text-align:right;color:#b92d20;font-family:Menlo,'Courier New',monospace;">${fmt(d.expense)}</td>
+      <td style="text-align:right;font-weight:700;font-family:Menlo,'Courier New',monospace;color:${net>=0?'#2a8a40':'#b92d20'};">${net>=0?'+':''}${fmt(net)}</td>
       <td>${net>=0?'<span class="badge bg-green">✅ Profitable</span>':'<span class="badge bg-red">⚠️ Loss</span>'}</td>
     </tr>`;
   }).join('');
@@ -1346,7 +1347,7 @@ function renderReports(){
     <td>${badge(t)}</td>
     <td style="text-align:right;font-family:Menlo,'Courier New',monospace;font-weight:700;">${fmt(v)}</td>
     <td style="text-align:right;">${totalExp>0?((v/totalExp)*100).toFixed(1):0}%</td>
-    <td style="font-size:.78rem;color:var(--muted);">${costTips[t]||'Review for optimization.'}</td>
+    <td style="font-size:.78rem;color:#7a6550;">${costTips[t]||'Review for optimization.'}</td>
   </tr>`).join('');
 
   // Trend chart — activities per month
@@ -1386,19 +1387,19 @@ function renderDashboard(){
   // Recent
   const recent=sortedActs(acts,'desc').slice(0,6);
   document.getElementById('dash-recent-act').innerHTML=recent.length
-    ?recent.map(r=>`<div style="padding:7px 0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;">
+    ?recent.map(r=>`<div style="padding:7px 0;border-bottom:1px solid #e0d4c4;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;">
         <div>${badge(r.type)} <span class="ctag" style="margin-left:4px;">${r.cropName}</span></div>
-        <div style="font-family:Menlo,'Courier New',monospace;font-size:.72rem;color:var(--muted);">${r.date}</div>
+        <div style="font-family:Menlo,'Courier New',monospace;font-size:.72rem;color:#7a6550;">${r.date}</div>
       </div>`).join('')
-    :'<p style="color:var(--muted);font-size:.85rem;padding:10px 0;">No activities yet.</p>';
+    :'<p style="color:#7a6550;font-size:.85rem;padding:10px 0;">No activities yet.</p>';
   // Top crops
   const top=Object.values(cropMap).sort((a,b)=>(b.income-b.expense)-(a.income-a.expense)).slice(0,5);
   document.getElementById('dash-top-crops').innerHTML=top.length
-    ?top.map(c=>{const n=c.income-c.expense;return`<div style="padding:7px 0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;">
+    ?top.map(c=>{const n=c.income-c.expense;return`<div style="padding:7px 0;border-bottom:1px solid #e0d4c4;display:flex;justify-content:space-between;align-items:center;">
         <span style="font-weight:700;">${c.name}</span>
-        <span style="font-family:Menlo,'Courier New',monospace;font-size:.82rem;font-weight:700;color:${n>=0?'var(--success)':'var(--danger)'};">${n>=0?'+':''}KES ${fmt(n)}</span>
+        <span style="font-family:Menlo,'Courier New',monospace;font-size:.82rem;font-weight:700;color:${n>=0?'#2a8a40':'#b92d20'};">${n>=0?'+':''}KES ${fmt(n)}</span>
       </div>`;}).join('')
-    :'<p style="color:var(--muted);font-size:.85rem;padding:10px 0;">Log sales and expenses to see top crops.</p>';
+    :'<p style="color:#7a6550;font-size:.85rem;padding:10px 0;">Log sales and expenses to see top crops.</p>';
 }
 
 // ─── EXPORT ───────────────────────────────────────────────────
@@ -1580,11 +1581,11 @@ function renderPlantingRecords() {
     ?`<div class="tbl-wrap"><table><thead><tr><th>Block</th><th>Crop</th><th>Area</th><th>Planted</th><th>Season</th><th>Harvest Due</th><th>Days Left</th></tr></thead><tbody>${
       active.map(r=>{
         let daysLeft='—',dClass='';
-        if(r.expHarvest){const d=Math.ceil((new Date(r.expHarvest)-new Date(today2))/(1000*60*60*24));daysLeft=d<=0?'Overdue!':d+' days';dClass=d<=14?'color:var(--danger);font-weight:700;':d<=30?'color:var(--warn);font-weight:700;':'color:var(--success);';}
+        if(r.expHarvest){const d=Math.ceil((new Date(r.expHarvest)-new Date(today2))/(1000*60*60*24));daysLeft=d<=0?'Overdue!':d+' days';dClass=d<=14?'color:#b92d20;font-weight:700;':d<=30?'color:#d4720a;font-weight:700;':'color:#2a8a40;';}
         return `<tr><td><strong>${r.blockName}</strong></td><td><span class="ctag">${r.cropName}</span></td><td>${r.area||'—'} ac</td><td style="font-family:Menlo,'Courier New',monospace;font-size:.78rem;">${r.date}</td><td style="font-size:.78rem;">${r.season||'—'}</td><td style="font-family:Menlo,'Courier New',monospace;font-size:.78rem;">${r.expHarvest||'—'}</td><td style="${dClass}">${daysLeft}</td></tr>`;
       }).join('')
     }</tbody></table></div>`
-    :'<p style="color:var(--muted);font-size:.85rem;padding:8px 0;">No active plantings. Add a planting record above.</p>';
+    :'<p style="color:#7a6550;font-size:.85rem;padding:8px 0;">No active plantings. Add a planting record above.</p>';
 
   renderRotationHistory();
 }
@@ -1594,7 +1595,7 @@ function renderRotationHistory(){
   const sel=document.getElementById('rotation-block-select'); const sv=sel.value;
   sel.innerHTML='<option value="">— Choose a block —</option>'+blocks.map(b=>`<option value="${b.id}">${b.name}</option>`).join('');
   if(sv)sel.value=sv;
-  if(!sv){document.getElementById('rotation-history').innerHTML='<p style="color:var(--muted);font-size:.85rem;">Select a block to see its crop rotation history.</p>';return;}
+  if(!sv){document.getElementById('rotation-history').innerHTML='<p style="color:#7a6550;font-size:.85rem;">Select a block to see its crop rotation history.</p>';return;}
   const pl=S.get('plantings').filter(r=>r.blockId===sv).sort((a,b)=>a.date.localeCompare(b.date));
   document.getElementById('rotation-history').innerHTML=pl.length
     ?`<div class="timeline">${pl.map(r=>`<div class="tl-item"><div class="tl-card">
@@ -1602,7 +1603,7 @@ function renderRotationHistory(){
         <div class="tl-meta"><span class="ctag">🌿 ${r.cropName}</span>${r.area?`<span class="badge bg-blue">${r.area} acres</span>`:''}<span class="badge ${r.status==='active'?'bg-green':r.status==='harvested'?'bg-teal':'bg-red'}">${r.status}</span>${r.yield?`<span class="badge bg-gold">Yield: ${r.yield}</span>`:''}</div>
         ${r.notes?`<div class="tl-notes">${r.notes}</div>`:''}
       </div></div>`).join('')}</div>`
-    :'<p style="color:var(--muted);font-size:.85rem;">No planting records for this block yet.</p>';
+    :'<p style="color:#7a6550;font-size:.85rem;">No planting records for this block yet.</p>';
 }
 
 // ─── HARVEST ALERTS ───────────────────────────────────────────
@@ -1612,11 +1613,11 @@ function renderHarvestAlerts(){
   const alerts=active.map(r=>{const d=Math.ceil((new Date(r.expHarvest)-new Date(today2))/(1000*60*60*24));return{...r,daysLeft:d};}).filter(r=>r.daysLeft<=30).sort((a,b)=>a.daysLeft-b.daysLeft);
   const el=document.getElementById('harvest-alerts');
   if(!alerts.length){el.innerHTML='';return;}
-  el.innerHTML=`<div style="background:#fff3e0;border-left:4px solid var(--warn);border-radius:8px;padding:12px 16px;margin-bottom:14px;">
-    <div style="font-weight:800;color:var(--warn);margin-bottom:6px;">⏰ Harvest Alerts</div>
+  el.innerHTML=`<div style="background:#fff3e0;border-left:4px solid #d4720a;border-radius:8px;padding:12px 16px;margin-bottom:14px;">
+    <div style="font-weight:800;color:#d4720a;margin-bottom:6px;">⏰ Harvest Alerts</div>
     ${alerts.map(r=>`<div style="font-size:.84rem;padding:3px 0;display:flex;justify-content:space-between;border-bottom:1px solid #ffe0b2;gap:8px;flex-wrap:wrap;">
       <span><strong>${r.cropName}</strong> in ${r.blockName}</span>
-      <span style="font-family:Menlo,'Courier New',monospace;font-weight:700;color:${r.daysLeft<=0?'var(--danger)':r.daysLeft<=14?'var(--danger)':'var(--warn)'};">${r.daysLeft<=0?'⚠️ OVERDUE':'Due in '+r.daysLeft+' days'} (${r.expHarvest})</span>
+      <span style="font-family:Menlo,'Courier New',monospace;font-weight:700;color:${r.daysLeft<=0?'#b92d20':r.daysLeft<=14?'#b92d20':'#d4720a'};">${r.daysLeft<=0?'⚠️ OVERDUE':'Due in '+r.daysLeft+' days'} (${r.expHarvest})</span>
     </div>`).join('')}
   </div>`;
 }
@@ -1705,7 +1706,7 @@ function renderStaff(){
       <div class="stat o"><div class="si">🏠</div><div class="sv">KES ${fmt(supervisorCost)}</div><div class="sl">Overhead (Supervisor)</div></div>
       <div class="stat"><div class="si">🌾</div><div class="sv">KES ${fmt(fieldCost)}</div><div class="sl">Field Workers</div></div>
     </div>
-    <div style="font-size:.8rem;color:var(--muted);margin-top:4px;">Supervisor salary is a farm overhead. Field workers' costs are allocated to crops based on daily work logs.</div>
+    <div style="font-size:.8rem;color:#7a6550;margin-top:4px;">Supervisor salary is a farm overhead. Field workers' costs are allocated to crops based on daily work logs.</div>
   `;
 
   // Populate worker dropdown in work log form
@@ -1792,10 +1793,10 @@ function renderWorkLog(){
     empty.style.display='none';
     const totalDays=logs.reduce((s,l)=>s+l.days,0);
     const totalCost=logs.reduce((s,l)=>s+l.cost,0);
-    document.getElementById('wklog-summary').innerHTML=`<div style="display:flex;gap:16px;font-size:.82rem;color:var(--muted);flex-wrap:wrap;">
+    document.getElementById('wklog-summary').innerHTML=`<div style="display:flex;gap:16px;font-size:.82rem;color:#7a6550;flex-wrap:wrap;">
       <span>Showing <strong>${logs.length}</strong> entries</span>
       <span>Total days: <strong style="font-family:Menlo,'Courier New',monospace;">${totalDays}</strong></span>
-      <span>Total cost: <strong style="font-family:Menlo,'Courier New',monospace;color:var(--danger);">KES ${fmt(totalCost)}</strong></span>
+      <span>Total cost: <strong style="font-family:Menlo,'Courier New',monospace;color:#b92d20;">KES ${fmt(totalCost)}</strong></span>
     </div>`;
     tbody.innerHTML=logs.map(l=>`<tr>
       <td style="font-family:Menlo,'Courier New',monospace;font-size:.78rem;">${l.date}</td>
@@ -1803,7 +1804,7 @@ function renderWorkLog(){
       <td style="text-align:center;font-weight:700;">${l.days}</td>
       <td style="font-size:.8rem;">${l.task}</td>
       <td>${l.allocId==='overhead'?'<span class="badge bg-brown">Farm Overhead</span>':`<span class="ctag">${l.allocName}</span>`}</td>
-      <td style="font-family:Menlo,'Courier New',monospace;font-weight:700;color:var(--danger);">KES ${fmt(l.cost)}</td>
+      <td style="font-family:Menlo,'Courier New',monospace;font-weight:700;color:#b92d20;">KES ${fmt(l.cost)}</td>
       <td style="font-size:.78rem;">${l.season||'—'}</td>
       <td style="font-size:.78rem;">${l.notes||'—'}</td>
       <td><button class="btn btn-danger" onclick="deleteWorkLog('${l.id}')">✕</button></td>
@@ -1830,7 +1831,7 @@ function renderAllocation(){
   document.getElementById('alloc-tbody').innerHTML=Object.entries(map).sort((a,b)=>b[1].cost-a[1].cost).map(([name,v])=>`<tr>
     <td>${name==='Farm Overhead'?'<span class="badge bg-brown">🏠 Farm Overhead</span>':`<span class="ctag">🌿 ${name}</span>`}</td>
     <td style="text-align:center;font-weight:700;">${v.days}</td>
-    <td style="font-family:Menlo,'Courier New',monospace;font-weight:700;color:var(--danger);">KES ${fmt(v.cost)}</td>
+    <td style="font-family:Menlo,'Courier New',monospace;font-weight:700;color:#b92d20;">KES ${fmt(v.cost)}</td>
     <td style="text-align:right;">${total>0?((v.cost/total)*100).toFixed(1):0}%</td>
   </tr>`).join('');
 }
@@ -1851,11 +1852,11 @@ function renderOverheads(){
   const ohs=S.get('overheads');
   const total=ohs.reduce((s,o)=>s+o.amount,0);
   document.getElementById('overhead-list').innerHTML=ohs.length
-    ?`<div style="margin-bottom:8px;font-size:.82rem;color:var(--muted);">Total other overheads: <strong style="font-family:Menlo,'Courier New',monospace;color:var(--danger);">KES ${fmt(total)}</strong></div>
+    ?`<div style="margin-bottom:8px;font-size:.82rem;color:#7a6550;">Total other overheads: <strong style="font-family:Menlo,'Courier New',monospace;color:#b92d20;">KES ${fmt(total)}</strong></div>
     <div class="tbl-wrap"><table><thead><tr><th>Date</th><th>Description</th><th>Period</th><th>Amount (KES)</th><th></th></tr></thead>
     <tbody>${ohs.map(o=>`<tr><td style="font-family:Menlo,'Courier New',monospace;font-size:.78rem;">${o.date||'—'}</td><td>${o.desc}</td><td style="font-size:.78rem;">${o.period||'—'}</td><td style="font-family:Menlo,'Courier New',monospace;font-weight:700;">KES ${fmt(o.amount)}</td><td><button class="btn btn-danger" onclick="deleteOverhead('${o.id}')">✕</button></td></tr>`).join('')}</tbody>
     </table></div>`
-    :'<p style="color:var(--muted);font-size:.82rem;">No overheads recorded yet.</p>';
+    :'<p style="color:#7a6550;font-size:.82rem;">No overheads recorded yet.</p>';
 }
 
 function deleteOverhead(id){
@@ -1959,7 +1960,7 @@ function renderBackup() {
   document.getElementById('backup-last-saved').textContent = `Last backup: ${lastDate}`;
 
   if(daysSince===null || daysSince>7) {
-    document.getElementById('backup-last-saved').innerHTML += ` <span style="color:var(--danger);font-weight:700;">— Please back up now!</span>`;
+    document.getElementById('backup-last-saved').innerHTML += ` <span style="color:#b92d20;font-weight:700;">— Please back up now!</span>`;
   }
 
   // Backup log
@@ -1974,7 +1975,7 @@ function renderBackup() {
           <td>${l.type==='restore'?'<span class="badge bg-orange">Restore</span>':'<span class="badge bg-green">Backup</span>'}</td>
         </tr>`).join('')}</tbody>
       </table></div>`
-    : '<p style="color:var(--muted);font-size:.85rem;">No backups yet. Create your first backup above.</p>';
+    : '<p style="color:#7a6550;font-size:.85rem;">No backups yet. Create your first backup above.</p>';
 }
 
 // ─── BACKUP REMINDER (check on load) ──────────────────────────
